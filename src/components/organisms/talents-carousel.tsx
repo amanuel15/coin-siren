@@ -2,11 +2,6 @@
 
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-
 import { ITalent } from "@/types/talent";
 
 import {
