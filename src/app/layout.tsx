@@ -23,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.variable}>{children}</body>
+      <body className={poppins.variable}>
+        <main className="min-h-svh bg-[#FBFBFB]">{children}</main>
+      </body>
     </html>
   );
 }
