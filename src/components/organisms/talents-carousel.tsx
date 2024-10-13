@@ -1,42 +1,19 @@
-"use client";
+'use client';
 
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 
-import { ITalent } from "@/types/talent";
+import { ITalent } from '@/types/talent';
 
-import {
-  StackedCarousel,
-  ResponsiveContainer,
-} from "react-stacked-center-carousel";
-import { useRef } from "react";
-import TalentCard from "../molecules/talent-card";
-import { cn } from "@/lib/utils";
-import InfoTooltip from "../molecules/info-tooltip";
-
-const talentData: ITalent = {
-  field: "마케팅",
-  yoe: 2.5,
-  first_name: "Abhishek",
-  last_name: "Gupta",
-  skills: [
-    "마케팅 콘텐츠 제작",
-    "인스타그램 관리",
-    "트위터 관리",
-    "블로그 글 작성",
-  ],
-  profile_picture:
-    "https://www.gravatar.com/avatar/2c7d99fe281ecd3bcd65ab915bac6dd5?s=250",
-  country_code: "CO",
-};
-
-export default function TalentsCarousel({ className }: { className?: string }) {
+import { StackedCarousel, ResponsiveContainer } from 'react-stacked-center-carousel';
+import { useRef } from 'react';
+import TalentCard from '../molecules/talent-card';
+import { cn } from '@/lib/utils';
+import InfoTooltip from '../molecules/info-tooltip';
+export default function TalentsCarousel({ className, talents }: { talents: ITalent[]; className?: string }) {
   const ref = useRef<StackedCarousel | undefined>();
   return (
-    <div className={cn("max-w-3xl relative flex flex-col", className)}>
-      <InfoTooltip
-        arrowPosition="center"
-        className="self-center mb-8 animate-fadeIn"
-      >
+    <div className={cn('max-w-3xl relative flex flex-col', className)}>
+      <InfoTooltip arrowPosition="center" className="self-center mb-8 animate-fadeIn">
         <p className="text-green-400 font-bold">월 100만원</p>
       </InfoTooltip>
       <ResponsiveContainer
@@ -53,11 +30,9 @@ export default function TalentsCarousel({ className }: { className?: string }) {
             <StackedCarousel
               ref={carouselRef}
               slideComponent={TalentCard}
-              slideWidth={
-                parentWidth < 500 ? parentWidth * 0.6 : parentWidth * 0.5
-              }
+              slideWidth={parentWidth < 500 ? parentWidth * 0.6 : parentWidth * 0.5}
               carouselWidth={parentWidth}
-              data={[talentData, talentData, talentData, talentData]}
+              data={talents}
               currentVisibleSlide={3}
               maxVisibleSlide={3}
               useGrabCursor
@@ -72,8 +47,7 @@ export default function TalentsCarousel({ className }: { className?: string }) {
           color="primary"
           onClick={() => {
             ref.current?.goBack();
-          }}
-        >
+          }}>
           <IoIosArrowBack color="white" />
         </div>
         <div
@@ -81,8 +55,7 @@ export default function TalentsCarousel({ className }: { className?: string }) {
           color="primary"
           onClick={() => {
             ref.current?.goNext();
-          }}
-        >
+          }}>
           <IoIosArrowForward color="white" />
         </div>
       </>
