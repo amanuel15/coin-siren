@@ -7,7 +7,9 @@ import SkillsGrid from '@/components/organisms/skills-grid';
 import TalentsCarousel from '@/components/organisms/talents-carousel';
 
 export default async function page() {
-  const result = await fetch('http://localhost:3000/api/talents').then((res) => res.json());
+  const result = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/api/talents`).then((res) =>
+    res.json(),
+  );
 
   return (
     <div className=" bg-gradient-to-br from-[#03b7be] to-[#098bd7]">
