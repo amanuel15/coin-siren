@@ -5,8 +5,10 @@ import Offers from '@/components/molecules/offers';
 import FieldsCarousel from '@/components/organisms/fields-carousel';
 import SkillsGrid from '@/components/organisms/skills-grid';
 import TalentsCarousel from '@/components/organisms/talents-carousel';
+import { getTalents } from '@/services/talents';
 
 export default async function page() {
+  // const data = await getTalents()
   const result = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'}/api/talents`).then((res) =>
     res.json(),
   );
